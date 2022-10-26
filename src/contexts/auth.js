@@ -36,7 +36,6 @@ async function singIn(email, password){
 
         const userProfile = await firebase.firestore().collection('user')
         .doc(uid).get();
-        console.log('profile', userProfile.data(), 'user', userProfile, 'uid', uid);
 
         let data = {
             uid: uid,
