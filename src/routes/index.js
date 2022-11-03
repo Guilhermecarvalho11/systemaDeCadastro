@@ -5,6 +5,7 @@ import Signin from '../pages/Signin';
 import SingUp from '../pages/SignUp';
 import Dashboard from '../pages/Dashboard';
 import Profile from '../pages/Profile/index'
+import Custumers from '../pages/Custumers';
 
 
 function RoutesApp() {
@@ -14,6 +15,7 @@ function RoutesApp() {
             <RouteWrapper exact path='/register' component={SingUp} />
             <RouteWrapper exact path='/dashboard' component={Dashboard} isPrivate/>
             <RouteWrapper exact path='/profile' component={Profile} isPrivate />
+            <RouteWrapper exact path='/custumers' component={Custumers} isPrivate />
         </Switch>
     );
   }

@@ -34,7 +34,7 @@ async function singIn(email, password){
     .then(async (value) => {
         let uid = value.user.uid;
 
-        const userProfile = await firebase.firestore().collection('user')
+        const userProfile = await firebase.firestore().collection('users')
         .doc(uid).get();
 
         let data = {
@@ -78,8 +78,7 @@ async function singIn(email, password){
                     email: value.user.email,
                     avatarUrl: null
                 };
-                setTimeout(() => {
-                    console.log('then', data);}, "2000")
+                
                 setUser(data);
                 storageUser(data);
                 setLoadingAuth(false);
@@ -116,7 +115,9 @@ async function singIn(email, password){
             signUp,
             signOut,
             singIn,
-            loadingAuth
+            loadingAuth,
+            setUser,
+            storageUser
             }}>
             {children}
         </AuthContext.Provider>
