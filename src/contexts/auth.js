@@ -11,7 +11,8 @@ function AuthProvider({ children}){
     useEffect(() => {
 
         function loadStorage(){
-            const storageUser = localStorage.getItem('SitemaUser');
+            const storageUser = localStorage.getItem('SistemaUser');
+
 
             if(storageUser){
                 setUser(JSON.parse(storageUser));
@@ -23,7 +24,7 @@ function AuthProvider({ children}){
 
         loadStorage();
 
-    }, [user])
+    }, [])
 
 
 // fazendo login
