@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./profile.css";
 import Header from "../../conponents/Header";
 import Title from "../../conponents/Title";

@@ -1,5 +1,6 @@
-import { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/auth";
+import {toast} from 'react-toastify';
 import firebase from "../../services/firebaseConnections";
 import { FiPlayCircle } from "react-icons/fi";
 import Header from "../../conponents/Header";
@@ -56,10 +57,28 @@ function New() {
     loadCustomers();
   }, []);
 
-  function handleRegister(e) {
+ async function handleRegister(e) {
     e.preventDefault();
 
-    alert("clicou");
+    await firebase.firestore().collection('chamados')
+    .add({
+      created: new Date(),
+      cliente: customers[customerSelected].nomeFantasia,
+      clienteId: customers[customerSelected].id,
+      assunto: assunto,
+      status: status,
+      complemento: complemento,
+      userId: user.uid
+    })
+    .then(() => {
+      toast.success('Chamado criado com sucesso!');
+      setComplemento('');
+      setCustomerSelected(0);
+    })
+    .catch((error) => {
+      toast.error('Ops, erro ao Registrar, tente novamente mais tarde')
+      console.log(error)
+    })
   }
 
   // chamado quando troca o assunto

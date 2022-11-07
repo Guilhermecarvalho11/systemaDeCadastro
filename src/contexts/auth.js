@@ -1,4 +1,4 @@
-import {useState, createContext, useEffect} from 'react';
+import React, {useState, createContext, useEffect} from 'react';
 import firebase from '../services/firebaseConnections';
 import {toast} from 'react-toastify';
 export const AuthContext = createContext({});
@@ -40,8 +40,8 @@ async function singIn(email, password){
 
         let data = {
             uid: uid,
-            nome: userProfile.data()?.nome,
-            avatarUrl: userProfile.data()?.avatarUrl,
+            nome:  userProfile.data() && userProfile.data().nome,
+            avatarUrl: userProfile.data() && userProfile.data().avatarUrl,
             email: value.user.email
         };
        
