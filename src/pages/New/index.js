@@ -5,6 +5,7 @@ import firebase from "../../services/firebaseConnections";
 import { FiPlayCircle } from "react-icons/fi";
 import Header from "../../conponents/Header";
 import Title from "../../conponents/Title";
+import { useHistory } from "react-router-dom";
 import "./new.css";
 
 function New() {
@@ -16,6 +17,8 @@ function New() {
   const [complemento, setComplemento] = useState("");
 
   const { user } = useContext(AuthContext);
+
+  let history = useHistory()
 
 
 
@@ -74,6 +77,7 @@ function New() {
       toast.success('Chamado criado com sucesso!');
       setComplemento('');
       setCustomerSelected(0);
+      history.push('/dashboard')
     })
     .catch((error) => {
       toast.error('Ops, erro ao Registrar, tente novamente mais tarde')
