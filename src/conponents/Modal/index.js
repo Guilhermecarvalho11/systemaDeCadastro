@@ -17,18 +17,18 @@ function Modal({conteudo, close}){
                     <h2>Detalhes do Chamados</h2>
 
                     <div className='row'>
-                        <span>Cliente: <a>{conteudo.cliente}</a></span>
+                        <span>Cliente: <i>{conteudo.cliente}</i></span>
 
                     </div>
 
                     <div className='row'>
-                        <span>Assunto: <a>{conteudo.assunto}</a></span>
-                        <span>Cadastrado em: <a>{conteudo.createdFormated}</a></span>
+                        <span>Assunto: <i>{conteudo.assunto}</i></span>
+                        <span>Cadastrado em: <i>{conteudo.createdFormated}</i></span>
 
                     </div>
 
                     <div className='row'>
-                        <span>Status <a style={{color: '#FFF', backgroundColor: conteudo.status === 'Aberto' ? '#5cb85c' : '#999'}}>{conteudo.status}</a></span>
+                        <span>Status <i style={{color: '#FFF', backgroundColor: conteudo.status === 'Aberto' ? '#5cb85c' : '#999'}}>{conteudo.status}</i></span>
                     </div>
 
                     {conteudo.complemento !== "" && (

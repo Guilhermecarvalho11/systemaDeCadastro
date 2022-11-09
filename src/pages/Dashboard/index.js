@@ -23,26 +23,29 @@ function Dashboard() {
   const [showPostModal, setShowPostModal] = useState(false);
   const [detail, setDetail] = useState();
 
+
+
   useEffect(() => {
+    async function loadChamados() {
+      await listRef
+        .limit(5)
+        .get()
+        .then((snapshot) => {
+          updateSatate(snapshot);
+        })
+        .catch((error) => {
+          console.log("Deu algum erro", error);
+          setLoadingMore(false);
+        });
+  
+      setLoading(false);
+    }
+  
     loadChamados();
 
-    return () => {};
+    return;
   }, []);
 
-  async function loadChamados() {
-    await listRef
-      .limit(5)
-      .get()
-      .then((snapshot) => {
-        updateSatate(snapshot);
-      })
-      .catch((error) => {
-        console.log("Deu algum erro", error);
-        setLoadingMore(false);
-      });
-
-    setLoading(false);
-  }
 
   async function updateSatate(snapshot) {
     const isCollectionEmpty = snapshot.size === 0;
@@ -160,11 +163,11 @@ function Dashboard() {
                           style={{ backgroundColor: "#3583f6" }} onClick={() => togglePostalModal(item)}>                       
                           <FiSearch color="#FFF" size={17} />
                         </button>
-                        <button
+                        <Link
                           className="action"
-                          style={{ backgroundColor: "#F6a935" }}>                       
+                          style={{ backgroundColor: "#F6a935" }} to={`/new/${item.id}`}>                       
                           <FiEdit2 color="#FFF" size={17} />
-                        </button>
+                        </Link>
                       </td>
                     </tr>
                   );

@@ -1,6 +1,5 @@
 import React from "react";
 import 'react-toastify/dist/ReactToastify.css';
-import firebase from "./services/firebaseConnections";
 import { BrowserRouter } from "react-router-dom";
 import RoutesApp from "./routes";
 import AuthProvider from "./contexts/auth";

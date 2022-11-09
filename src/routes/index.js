@@ -18,6 +18,7 @@ function RoutesApp() {
             <RouteWrapper exact path='/profile' component={Profile} isPrivate />
             <RouteWrapper exact path='/custumers' component={Custumers} isPrivate />
             <RouteWrapper exact path='/new' component={New} isPrivate />
+            <RouteWrapper exact path='/new/:id' component={New} isPrivate />
         </Switch>
     );
   }
